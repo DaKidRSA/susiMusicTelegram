@@ -1,0 +1,10 @@
+# .gitignore
+
+.git/
+
+__pycache__/
+.vscode/
+
+*.session
+
+config.py
