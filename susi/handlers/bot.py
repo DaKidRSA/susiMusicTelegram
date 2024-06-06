@@ -1,5 +1,12 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
+
 from pyrogram import Client
 from pyrogram.types import BotCommand
+
+from logger import log
 
 class SusiClient(Client):  # Define a custom client class that inherits from the Client class
     def __init__(self, api_id, api_hash, bot_token):
@@ -35,8 +42,8 @@ class SusiClient(Client):  # Define a custom client class that inherits from the
             ]
         )
 
-        # Print a success message to indicate that the bot has started successfully.
-        print("Bot started successfully.")
+        # Log a success message to indicate that the bot has started successfully.
+        log("bot").success("Bot started successfully.")
 
     async def stop(self):
         """
@@ -46,5 +53,4 @@ class SusiClient(Client):  # Define a custom client class that inherits from the
         # Stop the bot by calling the stop method of the base class.
         await super().stop()
 
-        print("Bot stopped.")
-
+        log("bot").info("Bot stopped.")
